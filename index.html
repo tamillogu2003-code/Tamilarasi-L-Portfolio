@@ -108,10 +108,62 @@
     .card:hover { transform: translateY(-12px); box-shadow: 0 0 25px #00e5ff44; }
 
     /* ================= PROJECTS ================= */
-    .projects { background: #2f2f2f; }
-    .project-grid { max-width: 1200px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
-    .project-grid img { width: 100%; border-radius: 16px; transition: 0.4s; }
-    .project-grid img:hover { transform: scale(1.05); }
+   .projects {
+  padding: 80px 10%;
+  text-align: center;
+}
+
+.projects h2 span {
+  color: #ff6a00;
+}
+
+.upload-box {
+  margin: 30px auto;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.upload-box input,
+.upload-box button {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.upload-box button {
+  background: #ff6a00;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.project-card {
+  background: #111;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.project-card img {
+  width: 150%;
+  height: 500px;
+  object-fit: cover;
+}
+
+.project-card h3 {
+  padding: 20px;
+  color: #fff;
+}
+
 /* ================= CONTACT ================= */
 .contact form {
   max-width: 700px;
@@ -243,12 +295,22 @@ textarea {
 <!-- ================= PROJECTS ================= -->
 <section class="projects" id="projects">
   <h2>Our <span>Projects</span></h2>
-  <div class="project-grid">
-    <img src="uiux.jpg" alt="Project 1">
-    <img src="graphic.webp" alt="Project 2">
-    <img src="logo image.jpg" alt="Project 3">
+
+  <!-- Upload Form -->
+  <div class="upload-box">
+    <input type="text" id="projectTitle" placeholder="Project Title">
+    <input type="file" id="projectImage" accept="image/*">
+    <button onclick="addProject()">Upload Project</button>
+  </div>
+
+  <!-- Project Display -->
+  <div class="project-grid" id="projectGrid">
+    <a class="btn" href="logo.jpeg">Logo Design  </a>
+    <a class="btn" href="poster.jpeg">Graphic Design</a>
+  <!-- Uploaded projects will appear here -->
   </div>
 </section>
+
 
 <!-- ================= CONTACT ================= -->
 <section class="contact" id="contact">
@@ -289,7 +351,34 @@ textarea {
     }
   }
   typingEffect();
+</script><script>
+function addProject() {
+  const title = document.getElementById("projectTitle").value;
+  const imageInput = document.getElementById("projectImage");
+
+  if (title === "" || imageInput.files.length === 0) {
+    alert("Please enter project title and image");
+    return;
+  }
+
+  const imageURL = URL.createObjectURL(imageInput.files[0]);
+
+  const projectCard = document.createElement("div");
+  projectCard.classList.add("project-card");
+
+  projectCard.innerHTML = `
+    <img src="${imageURL}" alt="${title}">
+    <h3>${title}</h3>
+  `;
+
+  document.getElementById("projectGrid").appendChild(projectCard);
+
+  // Reset inputs
+  document.getElementById("projectTitle").value = "";
+  imageInput.value = "";
+}
 </script>
+
 
 </body>
 </html>
