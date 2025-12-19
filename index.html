@@ -5,251 +5,118 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tamilarasi | UI/UX Designer</title>
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    /* ================= RESET ================= */
+    /* ================= RESET & GLOBAL ================= */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #000;
-      color: #fff;
-      overflow-x: hidden;
-    }
-
-    /* Offset anchor scroll for fixed header */
-    section { scroll-margin-top: 110px; }
-
-    /* ================= GLOBAL ================= */
-    section { padding: 90px 8%; }
+    body { font-family: 'Poppins', sans-serif; background: #000; color: #fff; overflow-x: hidden; }
+    section { padding: 90px 8%; scroll-margin-top: 110px; }
     h2 { text-align: center; margin-bottom: 50px; font-size: 36px; }
     h2 span { color: #00e5ff; }
 
     /* ================= NAVBAR ================= */
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(0,0,0,0.95);
-    }
-    nav {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
-    }
-    nav h2 { font-weight: 700; }
+    header { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(0,0,0,0.95); border-bottom: 1px solid #222; }
+    nav { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 20px; }
     nav ul { list-style: none; display: flex; gap: 30px; }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 15px;
-      transition: 0.3s;
-    }
+    nav a { color: #fff; text-decoration: none; font-size: 15px; transition: 0.3s; }
     nav a:hover { color: #00e5ff; }
 
-    /* ================= HERO (HOME) ================= */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 1200px;
-      margin: auto;
-      gap: 40px;
-      padding-top: 120px;
-    }
-    .hero-text { max-width: 520px; animation: fadeUp 1s ease; }
-    .hero-text h4 { font-weight: 400; margin-bottom: 10px; }
+    /* ================= HERO ================= */
+    .hero { min-height: 100vh; display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: auto; gap: 40px; }
     .hero-text h1 { font-size: 50px; margin-bottom: 10px; }
-    .hero-text h3 { font-weight: 500; }
     .hero-text h3 span { color: #00e5ff; }
-    .hero-text p { font-size: 14px; line-height: 1.7; margin-top: 18px; color: #ccc; }
     .socials { margin-top: 25px; }
     .socials i { margin-right: 18px; font-size: 20px; color: #00e5ff; cursor: pointer; transition: 0.3s; }
-    .socials i:hover { transform: scale(1.2); }
-
-    .hero-img { position: relative; display: flex; justify-content: center; align-items: center; }
+    .hero-img { position: relative; }
     .glow { position: absolute; width: 320px; height: 320px; background: #00e5ff; filter: blur(100px); border-radius: 50%; z-index: -1; }
     .hero-img img { width: 260px; border-radius: 50%; }
 
-    /* ================= ABOUT ================= */
-    .about {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 80px;
-      flex-wrap: wrap;
-    }
-    .about-img { position: relative; width: 300px; display: flex; justify-content: center; align-items: center; }
-    .ring { position: absolute; width: 280px; height: 280px; border: 3px solid #00e5ff; border-radius: 50%; animation: rotate 12s linear infinite; }
-    .about-img img { width: 240px; border-radius: 50%; background: #000; }
-    .about-text { max-width: 500px; }
-    .about-text p { font-size: 14px; line-height: 1.7; color: #ccc; margin-top: 15px; }
-    .btn { display: inline-block; margin-top: 22px; padding: 10px 26px; background: #00e5ff; color: #000; border-radius: 30px; text-decoration: none; font-weight: 500; }
+    /* ================= ABOUT & CIRCLE ANIME ================= */
+    .about { max-width: 1200px; margin: auto; display: flex; align-items: center; justify-content: center; gap: 80px; flex-wrap: wrap; }
+    .about-img { position: relative; width: 320px; height: 320px; display: flex; justify-content: center; align-items: center; }
+    .about-img::before { content: ""; position: absolute; width: 100%; height: 100%; border: 4px dashed #00e5ff; border-radius: 50%; animation: rotate 10s linear infinite; }
+    .about-img img { width: 250px; height: 250px; border-radius: 50%; object-fit: cover; z-index: 1; border: 5px solid #000; }
+    .btn { display: inline-block; margin-top: 22px; padding: 12px 28px; background: #00e5ff; color: #000; border-radius: 30px; text-decoration: none; font-weight: 600; border:none; cursor: pointer; transition: 0.3s; }
+    .btn:hover { background: #fff; transform: scale(1.05); }
 
-    /* ================= SERVICES ================= */
-    .services { background: #2f2f2f; }
-    .service-box { max-width: 1200px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
-    .card { background: #3b3b3b; padding: 35px 25px; border-radius: 18px; text-align: center; transition: 0.4s; }
-    .card h3 { margin-bottom: 15px; }
-    .card p { font-size: 14px; color: #ccc; line-height: 1.6; }
-    .card button { margin-top: 18px; padding: 8px 20px; border: none; background: #00e5ff; border-radius: 20px; cursor: pointer; font-weight: 500; }
-    .card:hover { transform: translateY(-12px); box-shadow: 0 0 25px #00e5ff44; }
+    /* ================= skills ================= */
+    .skills { background: #111; }
+    .skills-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+    .card { background: #1a1a1a; padding: 35px 25px; border-radius: 18px; text-align: center; border: 1px solid #333; transition: 0.4s; }
+    .card:hover { border-color: #00e5ff; transform: translateY(-10px); }
+    .extra-content { display: none; margin-top: 15px; font-size: 13px; color: #aaa; border-top: 1px solid #444; padding-top: 10px; }
 
     /* ================= PROJECTS ================= */
-   .projects {
-  padding: 80px 10%;
-  text-align: center;
-}
+    .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .project-card { background: #1a1a1a; border-radius: 15px; overflow: hidden; border: 1px solid #333; position: relative; }
+    .project-card img { width: 100%; height: 220px; object-fit: cover; transition: 0.5s; }
+    .project-info { padding: 20px; text-align: left; }
+    .project-info h3 { margin-bottom: 10px; }
+    .project-link { color: #00e5ff; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .project-card:hover img { transform: scale(1.1); }
 
-.projects h2 span {
-  color: #ff6a00;
-}
+    /* ================= CONTACT & SUCCESS MESSAGE ================= */
+    .contact form { max-width: 700px; margin: auto; position: relative; }
+    .row { display: flex; gap: 15px; margin-bottom: 15px; }
+    input, textarea { width: 100%; padding: 15px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #fff; outline: none; }
+    input:focus, textarea:focus { border-color: #00e5ff; }
+    
+    #success-msg { 
+      display: none; 
+      background: #d4edda; 
+      color: #155724; 
+      padding: 15px; 
+      border-radius: 8px; 
+      text-align: center; 
+      margin-top: 20px;
+      font-weight: 600;
+      animation: fadeIn 0.5s ease;
+    }
+    #success-msg i { margin-right: 10px; font-size: 20px; }
 
-.upload-box {
-  margin: 30px auto;
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.upload-box input,
-.upload-box button {
-  padding: 10px;
-  font-size: 16px;
-}
-
-.upload-box button {
-  background: #ff6a00;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-  margin-top: 40px;
-}
-
-.project-card {
-  background: #111;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-}
-
-.project-card img {
-  width: 150%;
-  height: 500px;
-  object-fit: cover;
-}
-
-.project-card h3 {
-  padding: 20px;
-  color: #fff;
-}
-
-/* ================= CONTACT ================= */
-.contact form {
-  max-width: 700px;
-  margin: auto;
-}
-
-.row {
-  display: flex;
-  gap: 20px;
-}
-
-input, textarea {
-  padding: 13px;
-  margin: 10px 0;
-  border-radius: 8px;
-  border: none;
-  background: #3a3a3a;
-  color: #fff;
-  font-size: 14px;
-  outline: none;
-}
-
-/* Half width inputs */
-.half {
-  width: 50%;
-}
-
-/* Full width textarea */
-textarea {
-  width: 100%;
-  min-height: 150px;
-  resize: none;
-}
-
-/* ================= MOBILE RESPONSIVE ================= */
-@media (max-width: 768px) {
-  .row {
-    flex-direction: column;
-  }
-  .half {
-    width: 100%;
-  }
-}
-
- /* ================= FOOTER ================= */
-    footer { text-align: center; padding: 20px; background: #000; font-size: 14px; color: #aaa; }
+    /* ================= FOOTER ================= */
+    footer { text-align: center; padding: 30px; border-top: 1px solid #222; color: #777; font-size: 14px; }
 
     /* ================= ANIMATIONS ================= */
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* ================= RESPONSIVE ================= */
     @media (max-width: 768px) {
+      .hero { flex-direction: column; text-align: center; padding-top: 150px; }
+      .row { flex-direction: column; }
       nav ul { display: none; }
-      .hero { flex-direction: column; text-align: center; }
-      .hero-text h1 { font-size: 40px; }
-      .about { gap: 40px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ================= NAV ================= -->
 <header>
   <nav>
-    <h2>Portfolio.</h2>
+    <h2>Portfolio<span>.</span></h2>
     <ul>
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
+      <li><a href="#skills">skills</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 </header>
 
-<!-- ================= HOME ================= -->
 <section class="hero" id="home">
   <div class="hero-text">
-    <h4>Hello It's Me</h4>
+    <h4>Hello, It's Me</h4>
     <h1>Tamilarasi</h1>
-    <h3>And I'm a <span id="typing"></span></h3>
+    <h3>And I'm a <span id="typing" style="color: #00e5ff;"></span></h3>
     <p>Building professional, user-friendly design that supports functionality and boosts user engagement.</p>
     <div class="socials">
-      <i class="fab fa-linkedin"></i>
-      <i class="fab fa-instagram"></i>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
     </div>
   </div>
   <div class="hero-img">
@@ -258,127 +125,156 @@ textarea {
   </div>
 </section>
 
-<!-- ================= ABOUT ================= -->
 <section class="about" id="about">
   <div class="about-img">
-    <img src="about-removebg-preview.png" alt="About">
+    <img src="about-removebg-preview.png" alt="About Me">
   </div>
   <div class="about-text">
     <h2>About <span>Me</span></h2>
-    <p>I'm a passionate UI/UX and graphic designer with strong focus on clean, modern and user‑friendly design.</p>
-    <a class="btn" href="Resume. (1).pdf">Download CV</a>
+    <p>I'm a passionate UI/UX and graphic designer with a strong focus on clean, modern, and user‑friendly designs. I believe that good design is not just how it looks, but how it works for the end user.</p>
+    <a class="btn" href="Resume. (1).pdf" download>Download CV</a>
   </div>
 </section>
 
-<!-- ================= SERVICES ================= -->
-<section class="services" id="services">
-  <h2>Our <span>Services</span></h2>
-  <div class="service-box">
+<section class="skills" id="skills">
+  <h2>Our <span>skills</span></h2>
+  <div class="skills-box">
     <div class="card">
+      <i class="fas fa-laptop-code" style="font-size: 40px; color: #00e5ff; margin-bottom: 15px;"></i>
       <h3>UI/UX Designer</h3>
       <p>Creating intuitive, user-centered digital experiences.</p>
-      <button>Read More</button>
+      <div class="extra-content" id="content1">
+        Detailed wireframing, user research, prototyping in Figma, and high-fidelity visual design tailored for mobile and web apps.
+      </div>
+      <button class="btn" onclick="toggleContent('content1', this)">Read More</button>
     </div>
+
     <div class="card">
+      <i class="fas fa-palette" style="font-size: 40px; color: #00e5ff; margin-bottom: 15px;"></i>
       <h3>Graphic Designer</h3>
       <p>Designing creative visuals for branding and marketing.</p>
-      <button>Read More</button>
+      <div class="extra-content" id="content2">
+        Logo creation, brand identity guidelines, and print media design that stands out from the competition.
+      </div>
+      <button class="btn" onclick="toggleContent('content2', this)">Read More</button>
     </div>
+
     <div class="card">
+      <i class="fas fa-globe" style="font-size: 40px; color: #00e5ff; margin-bottom: 15px;"></i>
       <h3>Web Designer</h3>
       <p>Modern, responsive website designs.</p>
-      <button>Read More</button>
+      <div class="extra-content" id="content3">
+        Custom website layouts using modern frameworks, ensuring responsiveness across all devices.
+      </div>
+      <button class="btn" onclick="toggleContent('content3', this)">Read More</button>
     </div>
   </div>
 </section>
 
-<!-- ================= PROJECTS ================= -->
 <section class="projects" id="projects">
   <h2>Our <span>Projects</span></h2>
-
-  <!-- Upload Form -->
-  <div class="upload-box">
-    <input type="text" id="projectTitle" placeholder="Project Title">
-    <input type="file" id="projectImage" accept="image/*">
-    <button onclick="addProject()">Upload Project</button>
-  </div>
-
-  <!-- Project Display -->
-  <div class="project-grid" id="projectGrid">
-    <a class="btn" href="logo.jpeg">Logo Design  </a>
-    <a class="btn" href="poster.jpeg">Graphic Design</a>
-  <!-- Uploaded projects will appear here -->
+  <div class="project-grid">
+    <div class="project-card">
+        <img src="logo.jpeg" alt="Logo Project">
+        <div class="project-info">
+            <h3>Logo Design</h3>
+            <p>Branding and logo design for a tech startup.</p>
+            <a href="logo.jpeg" target="_blank" class="project-link">View Project <i class="fas fa-external-link-alt"></i></a>
+        </div>
+    </div>
+    <div class="project-card">
+        <img src="poster.jpeg" alt="Poster Project">
+        <div class="project-info">
+            <h3>Poster Design</h3>
+            <p>Marketing poster for a creative arts festival.</p>
+            <a href="poster.jpeg" target="_blank" class="project-link">View Project <i class="fas fa-external-link-alt"></i></a>
+        </div>
+    </div>
   </div>
 </section>
 
-
-<!-- ================= CONTACT ================= -->
 <section class="contact" id="contact">
   <h2>Contact <span>Me!</span></h2>
-
-  <form>
-    <!-- Row 1 -->
+  <form id="contactForm" onsubmit="handleContact(event)">
     <div class="row">
-      <input type="text" placeholder="First Name" class="half">
-      <input type="text" placeholder="Last Name" class="half">
+      <input type="text" placeholder="First Name" required>
+      <input type="text" placeholder="Last Name" required>
     </div>
-
-    <!-- Row 2 -->
     <div class="row">
-      <input type="text" placeholder="Mobile Number" class="half">
-      <input type="email" placeholder="Email Address" class="half">
+      <input type="email" placeholder="Email Address" required>
+      <input type="text" placeholder="Mobile No">
     </div>
-
-    <!-- Message -->
-    <textarea placeholder="Your Message"></textarea>
-
+    <textarea placeholder="Your Message" rows="5" required></textarea>
     <button type="submit" class="btn">Send Message</button>
+    
+    <div id="success-msg">
+      <i class="fas fa-check-circle"></i> Message sent successfully!
+    </div>
   </form>
 </section>
+
 <footer>
-  <p>© 2025 Tamilarasi | UI/UX Designer</p>
+  <p>© 2025 Tamilarasi | UI/UX Designer | All Rights Reserved</p>
 </footer>
 
 <script>
   /* Typing Animation */
-  const text = "UI/UX Designer";
-  let i = 0;
-  function typingEffect() {
-    if (i < text.length) {
-      document.getElementById("typing").innerHTML += text.charAt(i);
-      i++;
-      setTimeout(typingEffect, 100);
+  const textArray = ["UI/UX Designer", "Graphic Designer", "Web Designer"];
+  let textIndex = 0;
+  let charIndex = 0;
+  const typingElement = document.getElementById("typing");
+
+  function type() {
+    if (charIndex < textArray[textIndex].length) {
+      typingElement.textContent += textArray[textIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(type, 150);
+    } else {
+      setTimeout(erase, 2000);
     }
   }
-  typingEffect();
-</script><script>
-function addProject() {
-  const title = document.getElementById("projectTitle").value;
-  const imageInput = document.getElementById("projectImage");
 
-  if (title === "" || imageInput.files.length === 0) {
-    alert("Please enter project title and image");
-    return;
+  function erase() {
+    if (charIndex > 0) {
+      typingElement.textContent = textArray[textIndex].substring(0, charIndex - 1);
+      charIndex--;
+      setTimeout(erase, 100);
+    } else {
+      textIndex = (textIndex + 1) % textArray.length;
+      setTimeout(type, 500);
+    }
+  }
+  document.addEventListener("DOMContentLoaded", type);
+
+  /* Service Toggle Logic */
+  function toggleContent(id, btn) {
+    const content = document.getElementById(id);
+    if (content.style.display === "block") {
+      content.style.display = "none";
+      btn.innerHTML = "Read More";
+    } else {
+      content.style.display = "block";
+      btn.innerHTML = "Read Less";
+    }
   }
 
-  const imageURL = URL.createObjectURL(imageInput.files[0]);
-
-  const projectCard = document.createElement("div");
-  projectCard.classList.add("project-card");
-
-  projectCard.innerHTML = `
-    <img src="${imageURL}" alt="${title}">
-    <h3>${title}</h3>
-  `;
-
-  document.getElementById("projectGrid").appendChild(projectCard);
-
-  // Reset inputs
-  document.getElementById("projectTitle").value = "";
-  imageInput.value = "";
-}
+  /* Contact Form Handler */
+  function handleContact(event) {
+    event.preventDefault(); // Stop page refresh
+    
+    // Show success message
+    const msg = document.getElementById('success-msg');
+    msg.style.display = "block";
+    
+    // Reset form
+    event.target.reset();
+    
+    // Hide message after 5 seconds
+    setTimeout(() => {
+      msg.style.display = "none";
+    }, 5000);
+  }
 </script>
-
 
 </body>
 </html>
